@@ -3,8 +3,6 @@
 @section('titulo', 'Contato')
 
 @section('conteudo')
-    
-    @include('site.layouts.menu-basico')
 
     <div class="conteudo-pagina">
         <div class="titulo-pagina">
@@ -13,28 +11,11 @@
 
         <div class="informacao-pagina">
             <div class="contato-principal">
-                <form>
-                    <input type="text" placeholder="Nome" class="borda-preta">
-                    <br>
-                    <input type="text" placeholder="Telefone" class="borda-preta">
-                    <br>
-                    <input type="text" placeholder="E-mail" class="borda-preta">
-                    <br>
-                    <select class="borda-preta">
-                        <option value="">Qual o motivo do contato?</option>
-                        <option value="">Dúvida</option>
-                        <option value="">Elogio</option>
-                        <option value="">Reclamação</option>
-                    </select>
-                    <br>
-                    <textarea class="borda-preta">Preencha aqui a sua mensagem</textarea>
-                    <br>
-                    <button type="submit" class="borda-preta">ENVIAR</button>
-                </form>
+                @component('site.layouts.form_contato',['classeBorda' => 'borda-preta', 'rota' => 'site.contato'])
+                    <p>A nossa equipe analisará a sua mensagem e retornaremos o mais brevemente possível!</p>
+                    <p>Nosso tempo médio de resposta é de 48 horas.</p>
+                @endcomponent
             </div>
         </div>  
     </div>
-
-    @include('site.layouts.rodape')
-
 @endsection

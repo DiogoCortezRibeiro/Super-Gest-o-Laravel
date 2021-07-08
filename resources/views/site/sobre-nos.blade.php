@@ -4,8 +4,6 @@
 
 @section('conteudo')
 
-    @include('site.layouts.menu-basico')
-
     <div class="conteudo-pagina">
         <div class="titulo-pagina">
             <h1>Olá, eu sou o Super Gestão</h1>
@@ -16,7 +14,5 @@
             <p>Desenvolvido com a mais alta tecnologia para você cuidar do que é mais importante, seus negócios!</p>
         </div>  
     </div>
-
-    @include('site.layouts.rodape')
 
 @endsection
