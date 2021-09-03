@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SiteContato;
+use App\MotivoContato;
 
 class ContatoController extends Controller
 {
@@ -35,11 +36,7 @@ class ContatoController extends Controller
             $contato->save();
         }*/
 
-        $motivo_contatos = [
-            '1' => 'Duvida',
-            '2' => 'Elogio',
-            '3' => 'Reclamação'
-        ];
+        $motivo_contatos = MotivoContato::all();
 
         return view('site.contato', ['motivo_contatos' => $motivo_contatos]);
     }
@@ -48,14 +45,14 @@ class ContatoController extends Controller
     {
         // realizar a validação do forms
         $request->validate([
-            'nome' => 'required|min:3|max:40',
+            'nome'     => 'required|min:3|max:40',
             'telefone' => 'required',
-            'email' => 'required',
-            'motivo_contato' => 'required',
+            'email'    => 'email',
+            'motivo_contatos_id' => 'required',
             'mensagem' => 'required|min:10|max:1000'
         ]);
-        //SiteContato::create($request->all());
+        SiteContato::create($request->all());
 
-        return view('site.contato');
+        return redirect()->route('site.index');
     }
 }
