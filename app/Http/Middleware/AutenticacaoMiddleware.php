@@ -17,21 +17,12 @@ class AutenticacaoMiddleware
     public function handle($request, Closure $next, $metodo_autenticacao)
     {
         // verifica se o suuario possui acesso a rota
+        session_start();
 
-        if($metodo_autenticacao == 'padrao')
-        {
-            // executa metodo padroa
-        }
-
-        if($metodo_autenticacao == 'outroMetodo')
-        {
-            // executa outro metodo
-        }
-
-        if(true){
+        if(isset($_SESSION['email']) && $_SESSION['email'] != ''){
             return $next($request);
         }
-        
-       return Response("Acesso negado! Rota exige autenticação!!");
+
+        return redirect()->route('site.login', ['erro' => 2]);
     }
 }
